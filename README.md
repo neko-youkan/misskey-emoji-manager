@@ -1,62 +1,76 @@
-# Misskey Emoji Importer
+# 🦀 Misskey Emoji Manager
 
-ZIPファイルに入った画像を、Misskeyのカスタム絵文字として一括登録するStreamlitアプリです。
+Misskeyのカスタム絵文字を簡単に管理できる、オープンソースの管理ツールです。
 
-## 主な機能
+ZIPファイルからの一括インポートや、登録済み絵文字の検索・管理をシンプルなUIで行えます。
 
-- PNG / JPG / GIF / WebP / AVIFに対応
-- ファイル名から絵文字名を自動生成
-- ZIP内フォルダ名をカテゴリとして利用
-- 共通カテゴリ・接頭辞・エイリアス・ライセンス設定
-- 登録済み絵文字のスキップ
-- ZIP内の名前重複チェック
-- テスト実行
-- 成功・失敗ログとCSV出力
-- 新旧Misskey APIの自動切り替え
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## 起動手順（Windows / WSL / Ubuntu）
+---
+
+## ✨ Features
+
+- 📦 ZIPファイルから絵文字を一括登録
+- 🏷️ 登録済み絵文字の一覧表示
+- 🔍 名前・カテゴリ・エイリアス検索
+- 📂 カテゴリ管理
+- 🔁 重複する絵文字を自動スキップ
+- 🧪 Dry Run（登録前の確認）
+
+---
+
+## 📷 Screenshots
+
+### Home
+
+> （Home画面のスクリーンショット）
+
+### Emoji List
+
+> （Emoji List画面のスクリーンショット）
+
+---
+
+## 🚀 Live Demo
+
+Streamlit Community Cloud
+
+> （公開URL）
+
+---
+
+## 💻 Installation
 
 ```bash
-cd misskey-emoji-importer
-python3 -m venv .venv
-source .venv/bin/activate
+git clone https://github.com/neko-youkan/misskey-emoji-manager.git
+
+cd misskey-emoji-manager
+
 pip install -r requirements.txt
+
 streamlit run app.py
 ```
 
-WindowsのPowerShellで直接動かす場合：
+---
 
-```powershell
-cd misskey-emoji-importer
-py -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-streamlit run app.py
-```
+## 🗺️ Roadmap
 
-ブラウザで通常は `http://localhost:8501` が開きます。
+- [ ] ✏️ Edit Emoji
+- [ ] 🗑️ Delete Emoji
+- [ ] 💾 Export ZIP
+- [ ] ⚙️ Settings
+- [ ] 📊 Dashboard
 
-## APIトークン
+---
 
-Misskeyの設定画面からAPIトークンを作成し、管理者として絵文字を登録できる権限を付けてください。
-トークンはGitにコミットしたり、スクリーンショットへ写したりしないでください。
+## 🤝 Contributing
 
-## ZIPの例
+Issue・Pull Requestは歓迎です。
 
-```text
-neco-emojis.zip
-├── neko_hello.png
-├── neko_sleep.gif
-└── reaction/
-    ├── neko_yes.png
-    └── neko_no.png
-```
+---
 
-「フォルダ名をカテゴリにする」が有効で、共通カテゴリが空欄なら、
-`reaction` フォルダ内の画像は `reaction` カテゴリになります。
+## 📄 License
 
-## 注意
-
-Misskey本体やフォークによって、絵文字登録APIの仕様が異なる場合があります。
-このアプリは `emojis/create` を先に試し、未対応なら `admin/emoji/add` を試します。
-失敗した場合は、画面の「詳細」にAPI応答が表示されます。
+This project is licensed under the MIT License.
